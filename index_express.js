@@ -4,7 +4,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 const Contenedor1 = new Contenedor('productos.json');
 const server = app.listen(PORT, () => {
-    console.log(`servidor corriendo en ${PORT}`)
+    console.log(`servidor corriendo en el ${PORT}`)
 })
 server.on("error",(error) =>{
     console.log("hubo un error en el servidor")
