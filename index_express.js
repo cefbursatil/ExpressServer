@@ -14,7 +14,7 @@ server.on("error",(error) =>{
 
 app.get('/productos',async(request,response,next) => {
     try {
-        await Contenedor1.getAll();
+        const lista = await Contenedor1.getAll();
         console.log(lista)
         response.send(lista)
       }
@@ -25,7 +25,7 @@ app.get('/productos',async(request,response,next) => {
 })
 app.get('/productoRandom',async(request,response) => {
     try {
-        await Contenedor1.getRandom();
+      const itemrandom = await Contenedor1.getRandom();
         console.log(itemrandom)
         response.send(itemrandom)
       }
