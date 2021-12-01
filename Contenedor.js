@@ -2,24 +2,49 @@ const fs = require('fs');
 class Contenedor{
     constructor(pNameFile){
         this.nameFile=pNameFile;
+        this.id=0
+        this.array=[]
         this.init(this.nameFile);
+        
     };
 
     init(file){
         let data; 
         try{
             data= fs.readFileSync(file,'utf-8')
-            this.array=JSON.parse(data);
-            this.id=this.array.length;
+            const arrayjson=JSON.parse(data)
+            for(const item of arrayjson){
+                this.insert(item)
+            }
+            fs.writeFileSync(file,JSON.stringify(this.array))
+
         }
         catch{
             this.array=[];
             this.id=0;
         }  
     }
+    insert(item){
+        item.id=++this.id;
+        this.array.push(item)
+    }
+    async update(id,obj){
+        const index = this.array.findIndex((objT) => objT.id ==id);
+        obj.id = this.array(index).id
+        this.array[index]=obj;
+        let save =0;
+        try {
+            await fs.promises.writeFile(this.nameFile,JSON.stringify(this.array))
+            save=1;
+        }
+        catch(error){
+            this.array.pop();
+            console.error(error)
+        }
+    }
     async save (objeto) {
         if(this.array.length==0){
-            objeto.id=this.id;
+            objeto.id=++this.id;
             let save=0;
             this.array.push(objeto)
             //console.log(JSON.stringify(this.array))

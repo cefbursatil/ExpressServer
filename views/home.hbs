@@ -1,0 +1,17 @@
+{{#if showList}}
+    <ul>
+        {{#each list}}
+            <li><b>{{this.title}}</b> con paginas: {{this.pages}}</li>
+            <form action="/api/productos/{{this.id}}?_method=DELETE" method="post">
+                    <input type="submit" name="_method" value="DELETE"/>
+            </form>
+        {{/each}}
+    </ul>
+{{else}}
+    No hay lista
+{{/if}}
+
+
+<hr>
+
+{{> form }}
