@@ -10,15 +10,24 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
+//HBS
 
-app.engine(
-  "hbs",
-  handlebars.engine({
-      extname: ".hbs",
-      partialsDir: __dirname + "/views/partials"
-  })
-)
-app.set("view engine", "hbs")
+// app.engine(
+//   "hbs",
+//   handlebars.engine({
+//       extname: ".hbs",
+//       partialsDir: __dirname + "/views/partials"
+//   })
+// )
+//app.set("view engine", "hbs")
+
+//EJS
+//app.set("view engine", "ejs")
+
+
+//PUG
+app.set("view engine", "pug")
+
 app.set("views", "./views")
 app.use(methodOverride('_method'));
 

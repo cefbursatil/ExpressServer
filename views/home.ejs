@@ -1,0 +1,17 @@
+<% if(showList) { %>
+    <ul>
+        <% list.forEach(function(book) { %>
+            <li><b><%= book.title%></b> con paginas: <%=book.pages%></li>
+            <form action="/api/productos/<%=book.id%>?_method=DELETE" method="post">
+                    <input type="submit" name="_method" value="DELETE"/>
+            </form>
+            <% }); %> 
+    </ul>
+<% } else{ %>
+    No hay lista
+    <% } %>
+
+
+<hr>
+
+<%- include('./partials/form.ejs') %>

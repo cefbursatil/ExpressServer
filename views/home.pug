@@ -1,0 +1,14 @@
+html
+    head
+        title="PUG"
+    body 
+        if showList
+            ul
+                each book in list
+                    li #{book.title} con paginas: #{book.title}
+                    form(action="/api/productos/#{book.id}?_method=DELETE" method="post") 
+                        input(type="submit" name="_method" value="DELETE")
+        else
+            p="No hay lista"
+        
+        include ./partials/form.pug
